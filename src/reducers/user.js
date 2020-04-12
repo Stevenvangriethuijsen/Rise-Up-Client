@@ -1,8 +1,8 @@
-import { JWT, NEW_USER } from "../actions";
+import { JWT, NEW_USER } from "../actions/user";
 
 const initialstate = "";
 
-export default function(state = initialstate, action = {}) {
+export default function (state = initialstate, action = {}) {
   switch (action.type) {
     case JWT: {
       console.log(action.payload, "this is the login response");
