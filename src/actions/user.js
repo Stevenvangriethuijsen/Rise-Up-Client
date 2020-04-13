@@ -1,6 +1,7 @@
 import superagent from "superagent";
 
-const baseUrl = "http://localhost:4000";
+const baseUrl =
+  "https://gentle-stream-67817.herokuapp.com/user" || "http://localhost:4000";
 
 export const JWT = "JWT";
 
