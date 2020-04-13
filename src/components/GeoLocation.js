@@ -1,4 +1,5 @@
 import React from "react";
+import DisplayMap from "../containers/Map";
 
 class GeoLocation extends React.Component {
   render() {
@@ -10,6 +11,7 @@ class GeoLocation extends React.Component {
             <h3>{this.props.geolocation.latitude}</h3>
             <h3>{this.props.geolocation.longitude}</h3>
           </div>
+          <DisplayMap />
         </div>
       );
     } else {
