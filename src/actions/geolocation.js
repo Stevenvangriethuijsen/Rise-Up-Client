@@ -1,11 +1,11 @@
 import superagent from "superagent";
 
-// const baseUrl =
-//   "https://gentle-stream-67817.herokuapp.com" || "http://localhost:4000";
+const baseUrl =
+  "https://gentle-stream-67817.herokuapp.com" || "http://localhost:4000";
 
 // enable top baseUrl when deploying to heroku
 
-const baseUrl = "http://localhost:4000";
+// const baseUrl = "http://localhost:4000";
 
 export const GET_LOCATION = "GET_LOCATION";
 
@@ -37,7 +37,7 @@ export const getLocation = () => async (dispatch, getState) => {
       console.log("i am creating new coordinates");
       const response = await superagent
         .post(`${baseUrl}/user/location`)
-        // .set("Authorization", `Bearer ${user.jwt}`)
+        .set("Authorization", `Bearer ${user.jwt}`)
         .send(data);
       const action = newLocation(response.body);
       dispatch(action);
@@ -45,7 +45,7 @@ export const getLocation = () => async (dispatch, getState) => {
       console.log("i am updating coordinates");
       const response = await superagent
         .put(`${baseUrl}/user/location/${user.userLocation.id}`)
-        // .set("Authorization", `Bearer ${user.jwt}`)
+        .set("Authorization", `Bearer ${user.jwt}`)
         .send(data);
       console.log(response.body);
       const action = newLocation(response.body);
