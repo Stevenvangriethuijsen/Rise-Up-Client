@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-// import LoginFormContainer from "./LoginFormContainer";
+import LoginFormContainer from "../containers/LoginFormContainer";
 import SignUpFormContainer from "../containers/SignUpFormContainer";
 
 class Homepage extends React.Component {
@@ -15,9 +15,9 @@ class Homepage extends React.Component {
     } else {
       return (
         <div>
-          <h1>please log in</h1>
+          <h1>please log in or sign up</h1>
           <SignUpFormContainer />
-          {/* <LoginFormContainer /> */}
+          <LoginFormContainer />
         </div>
       );
     }
