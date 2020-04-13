@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import LoginFormContainer from "../containers/LoginFormContainer";
 import SignUpFormContainer from "../containers/SignUpFormContainer";
+import GeoLocationContainer from "../containers/GeoLocationContainer";
 
 class Homepage extends React.Component {
   render() {
@@ -10,6 +11,7 @@ class Homepage extends React.Component {
       return (
         <div>
           <h1>You are logged in</h1>
+          <GeoLocationContainer />
         </div>
       );
     } else {
