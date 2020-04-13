@@ -44,10 +44,10 @@ export const getLocation = () => async (dispatch, getState) => {
     } else {
       console.log("i am updating coordinates");
       const response = await superagent
-        .put(`${baseUrl}/user/location/${user.userId}`)
+        .put(`${baseUrl}/user/location/${user.userLocation.id}`)
         // .set("Authorization", `Bearer ${user.jwt}`)
         .send(data);
-
+      console.log(response.body);
       const action = newLocation(response.body);
       dispatch(action);
     }
