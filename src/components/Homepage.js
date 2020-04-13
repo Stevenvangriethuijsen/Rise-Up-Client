@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 // import LoginFormContainer from "./LoginFormContainer";
-// import SignUpFormContainer from "./SignUpFormContainer";
+import SignUpFormContainer from "../containers/SignUpFormContainer";
 
 class Homepage extends React.Component {
   render() {
@@ -16,7 +16,7 @@ class Homepage extends React.Component {
       return (
         <div>
           <h1>please log in</h1>
-          {/* <SignUpFormContainer /> */}
+          <SignUpFormContainer />
           {/* <LoginFormContainer /> */}
         </div>
       );
