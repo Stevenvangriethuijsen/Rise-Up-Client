@@ -1,6 +1,6 @@
 import { GET_LOCATION } from "../actions/geolocation";
 
-const initialstate = {};
+const initialstate = "";
 
 export default function (state = initialstate, action) {
   switch (action.type) {

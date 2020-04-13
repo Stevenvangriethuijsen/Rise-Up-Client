@@ -1,18 +1,20 @@
 import React from "react";
 import { connect } from "react-redux";
 import { getLocation } from "../actions/geolocation";
+import GeoLocation from "../components/GeoLocation";
 
 class GeoLocationContainer extends React.Component {
-  componentDidMount() {
+  onSubmit = () => {
+    console.log("i am clicked");
     this.props.getLocation();
-  }
+  };
+
   render() {
     return (
-      <div>
-        <h1>Your Coordinates are</h1>
-        <h3>{this.props.geolocation.latitude}</h3>
-        <h3>{this.props.geolocation.longitude}</h3>
-      </div>
+      <GeoLocation
+        onSubmit={this.onSubmit}
+        geolocation={this.props.geolocation}
+      />
     );
   }
 }
