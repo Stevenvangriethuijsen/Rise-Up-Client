@@ -24,13 +24,33 @@ function getCurrentPosition(options = {}) {
 
 export const getLocation = () => async (dispatch, getState) => {
   try {
+    const state = getState();
+    const { user } = state;
     const location = await getCurrentPosition();
     console.log(location, "logging location");
-    const action = newLocation({
+    const data = {
+      userId: user.userId,
       latitude: location.coords.latitude,
       longitude: location.coords.longitude,
-    });
-    dispatch(action);
+    };
+    if (user.userLocation === null) {
+      console.log("i am creating new coordinates");
+      const response = await superagent
+        .post(`${baseUrl}/user/location`)
+        // .set("Authorization", `Bearer ${user.jwt}`)
+        .send(data);
+      const action = newLocation(response.body);
+      dispatch(action);
+    } else {
+      console.log("i am updating coordinates");
+      const response = await superagent
+        .put(`${baseUrl}/user/location/${user.userId}`)
+        // .set("Authorization", `Bearer ${user.jwt}`)
+        .send(data);
+
+      const action = newLocation(response.body);
+      dispatch(action);
+    }
   } catch (error) {
     console.error(error);
   }
