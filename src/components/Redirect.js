@@ -5,7 +5,11 @@ class Redirect extends React.Component {
   render() {
     return (
       <div>
-        <Link to="/">Please Log in or Sign up first</Link>
+        <h1>Please log in or sign up first</h1>
+
+        <Link to="/">
+          <button>Click here to go back</button>
+        </Link>
       </div>
     );
   }

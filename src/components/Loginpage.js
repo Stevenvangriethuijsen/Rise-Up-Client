@@ -2,8 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import LoginFormContainer from "../containers/LoginFormContainer";
 import SignUpFormContainer from "../containers/SignUpFormContainer";
-import GeoLocationContainer from "../containers/GeoLocationContainer";
 import Homepage from "./Homepage";
+
 class LoginPage extends React.Component {
   render() {
     if (this.props.user !== "") {
