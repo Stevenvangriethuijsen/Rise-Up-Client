@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { getLocation } from "../actions/geolocation";
 import Redirect from "../components/Redirect";
 import GeoLocation from "../components/GeoLocation";
-
+import Navbar from "../components/Navbar";
 class GeoLocationContainer extends React.Component {
   onSubmit = () => {
     console.log("i am clicked");
@@ -13,10 +13,13 @@ class GeoLocationContainer extends React.Component {
   render() {
     if (this.props.user !== "") {
       return (
-        <GeoLocation
-          onSubmit={this.onSubmit}
-          geolocation={this.props.geolocation}
-        />
+        <div>
+          <Navbar />
+          <GeoLocation
+            onSubmit={this.onSubmit}
+            geolocation={this.props.geolocation}
+          />
+        </div>
       );
     } else {
       return <Redirect />;

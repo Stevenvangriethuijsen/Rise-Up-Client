@@ -10,7 +10,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Route path="/" exact component={LoginPage} />
-        <Route path="/home" exact component={GeoLocationContainer} />
+        <Route path="/map" exact component={GeoLocationContainer} />
       </div>
     );
   }
