@@ -5,9 +5,15 @@ class Navbar extends React.Component {
   render() {
     return (
       <div>
-        <Link to="/">home</Link>
-        <Link to="/map">map</Link>
-        <Link to="/about">about</Link>
+        <Link to="/">
+          <button>home</button>
+        </Link>
+        <Link to="/map">
+          <button>map</button>
+        </Link>
+        <Link to="/about">
+          <button>about</button>
+        </Link>
       </div>
     );
   }
