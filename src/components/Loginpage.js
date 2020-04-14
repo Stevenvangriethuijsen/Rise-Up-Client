@@ -5,12 +5,12 @@ import LoginFormContainer from "../containers/LoginFormContainer";
 import SignUpFormContainer from "../containers/SignUpFormContainer";
 import GeoLocationContainer from "../containers/GeoLocationContainer";
 
-class Homepage extends React.Component {
+class LoginPage extends React.Component {
   render() {
     if (this.props.user !== "") {
       return (
         <div>
-          <h1>You are logged in</h1>
+          <h1>Welcome</h1>
           <GeoLocationContainer />
         </div>
       );
@@ -29,4 +29,4 @@ class Homepage extends React.Component {
 function mapStateToProps(state) {
   return { user: state.user };
 }
-export default connect(mapStateToProps)(Homepage);
+export default connect(mapStateToProps)(LoginPage);

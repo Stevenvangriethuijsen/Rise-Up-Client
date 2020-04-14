@@ -1,11 +1,16 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
+import { userLocations } from "../actions/userlocations";
 
 class DisplayMap extends React.Component {
   state = {
     zoom: 15,
   };
+
+  componentDidMount() {
+    this.props.userLocations();
+  }
   render() {
     const position = [
       this.props.geolocation.latitude,
@@ -48,5 +53,6 @@ function mapStateToProps(state) {
     userlocations: state.userlocations,
   };
 }
+const mapDispatchToProps = { userLocations };
 
-export default connect(mapStateToProps)(DisplayMap);
+export default connect(mapStateToProps, mapDispatchToProps)(DisplayMap);
