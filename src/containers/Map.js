@@ -26,13 +26,26 @@ class DisplayMap extends React.Component {
             Hey there {this.props.user.name} <br /> You are here!
           </Popup>
         </Marker>
+        {this.props.userlocations.map((user) => (
+          <Marker key={user.userId} position={[user.latitude, user.longitude]}>
+            <Popup>
+              Hi I'm {user.userId}
+              <br />
+              Check me out!
+            </Popup>
+          </Marker>
+        ))}
       </Map>
     );
   }
 }
 
 function mapStateToProps(state) {
-  return { geolocation: state.geolocation, user: state.user };
+  return {
+    geolocation: state.geolocation,
+    user: state.user,
+    userlocations: state.userlocations,
+  };
 }
 
 export default connect(mapStateToProps)(DisplayMap);

@@ -8,7 +8,6 @@ export default function (state = initialstate, action) {
       console.log(action.payload, "this is the location response");
       return action.payload;
     }
-
     default:
       return state;
   }
