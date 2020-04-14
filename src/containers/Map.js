@@ -21,11 +21,7 @@ class DisplayMap extends React.Component {
           attribution='&copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={position}>
-          <Popup>
-            Hey there {this.props.user.name} <br /> You are here!
-          </Popup>
-        </Marker>
+
         {this.props.userlocations.map((user) => (
           <Marker key={user.userId} position={[user.latitude, user.longitude]}>
             <Popup>
@@ -35,6 +31,11 @@ class DisplayMap extends React.Component {
             </Popup>
           </Marker>
         ))}
+        <Marker position={position}>
+          <Popup>
+            Hey there {this.props.user.name} <br /> You are here!
+          </Popup>
+        </Marker>
       </Map>
     );
   }
