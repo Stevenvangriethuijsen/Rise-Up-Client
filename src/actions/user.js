@@ -1,11 +1,11 @@
 import superagent from "superagent";
 
-const baseUrl =
-  "https://gentle-stream-67817.herokuapp.com" || "http://localhost:4000";
+// const baseUrl =
+//   "https://gentle-stream-67817.herokuapp.com" || "http://localhost:4000";
 
 // enable top baseUrl when deploying to heroku
 
-// const baseUrl = "http://localhost:4000";
+const baseUrl = "http://localhost:4000";
 
 export const JWT = "JWT";
 

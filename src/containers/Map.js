@@ -21,6 +21,16 @@ class DisplayMap extends React.Component {
           attribution='&copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
+
+        {this.props.userlocations.map((user) => (
+          <Marker key={user.userId} position={[user.latitude, user.longitude]}>
+            <Popup>
+              Hi I'm {user.userId}
+              <br />
+              Check me out!
+            </Popup>
+          </Marker>
+        ))}
         <Marker position={position}>
           <Popup>
             Hey there {this.props.user.name} <br /> You are here!
@@ -32,7 +42,11 @@ class DisplayMap extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return { geolocation: state.geolocation, user: state.user };
+  return {
+    geolocation: state.geolocation,
+    user: state.user,
+    userlocations: state.userlocations,
+  };
 }
 
 export default connect(mapStateToProps)(DisplayMap);
