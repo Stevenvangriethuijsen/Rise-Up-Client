@@ -65,3 +65,34 @@ export const logoutUser = () => async (dispatch, getState) => {
     console.error(error);
   }
 };
+
+export const USERS = "USERS";
+
+function allUsers(users) {
+  return {
+    type: USERS,
+    payload: users,
+  };
+}
+
+export const getUsers = () => async (dispatch, getState) => {
+  try {
+    const state = getState();
+
+    const { users } = state;
+
+    const condition = users.length;
+
+    if (condition) {
+      return null;
+    }
+
+    const response = await superagent.get(`${baseUrl}/user`);
+
+    const action = allUsers(response.body);
+
+    dispatch(action);
+  } catch (error) {
+    console.error(error);
+  }
+};

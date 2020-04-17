@@ -3,15 +3,24 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import { userLocations } from "../actions/userlocations";
-
+import { getUsers } from "../actions/user";
 class DisplayMap extends React.Component {
   state = {
     zoom: 15,
   };
 
   componentDidMount() {
+    this.props.getUsers();
     this.props.userLocations();
   }
+
+  singleUser = (geolocationObject) => {
+    const name = this.props.users.find(
+      (user) => user.userId === geolocationObject.userId
+    );
+    // console.log(name);
+    return name.name;
+  };
   render() {
     const position = [
       this.props.geolocation.latitude,
@@ -40,18 +49,28 @@ class DisplayMap extends React.Component {
               position={[user.latitude, user.longitude]}
             >
               <Popup>
-                Hi I'm
-                <Link to={`profile/${user.userId}`}>{user.userId}</Link>
-                <br />
-                Check me out!
+                <Link to={`profile/${user.userId}`}>
+                  Hi I'm {this.singleUser(user)}
+                  <br />
+                  Check me out!
+                </Link>
               </Popup>
             </Marker>
           ))}
+
         <Marker position={position}>
           <Popup>
             Hey there {this.props.user.name} <br /> You are here!
           </Popup>
         </Marker>
+
+        {/* {this.props.users
+          .filter((user) => user.location.latitude !== null)
+          .map((user) =>
+            console.log(
+              `${user.name} is at the following coordinates ${user.location.latitude} x ${user.location.longitude}`
+            )
+          )} */}
       </Map>
     );
   }
@@ -62,8 +81,9 @@ function mapStateToProps(state) {
     geolocation: state.geolocation,
     user: state.user,
     userlocations: state.userlocations,
+    users: state.users,
   };
 }
-const mapDispatchToProps = { userLocations };
+const mapDispatchToProps = { userLocations, getUsers };
 
 export default connect(mapStateToProps, mapDispatchToProps)(DisplayMap);
