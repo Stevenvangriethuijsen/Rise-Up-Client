@@ -13,12 +13,10 @@ class GeoLocationContainer extends React.Component {
   render() {
     if (this.props.user !== "") {
       return (
-        <div>
-          <GeoLocation
-            onSubmit={this.onSubmit}
-            geolocation={this.props.geolocation}
-          />
-        </div>
+        <GeoLocation
+          onSubmit={this.onSubmit}
+          geolocation={this.props.geolocation}
+        />
       );
     } else {
       return <Redirect />;
