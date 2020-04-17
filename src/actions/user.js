@@ -48,3 +48,20 @@ export const createUser = (data) => async (dispatch, getState) => {
     console.error(error);
   }
 };
+
+export const USER_LOGOUT = "USER_LOGOUT";
+
+function userLogout() {
+  return {
+    type: USER_LOGOUT,
+  };
+}
+
+export const logoutUser = () => async (dispatch, getState) => {
+  try {
+    const action = userLogout();
+    dispatch(action);
+  } catch (error) {
+    console.error(error);
+  }
+};
