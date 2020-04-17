@@ -1,23 +1,39 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 class Navbar extends React.Component {
   render() {
-    return (
-      <div>
-        <Link to="/">
-          <button>home</button>
-        </Link>
-        <Link to="/map">
-          <button>map</button>
-        </Link>
-        <Link to="/about">
-          <button>about</button>
-        </Link>
-        <button onClick={this.props.onSubmit}>logout</button>
-      </div>
-    );
+    if (this.props.user !== "") {
+      return (
+        <div>
+          <Link to="/">
+            <button>home</button>
+          </Link>
+          <Link to="/map">
+            <button>map</button>
+          </Link>
+          <Link to="/about">
+            <button>about</button>
+          </Link>
+          <button onClick={this.props.onSubmit}>logout</button>
+        </div>
+      );
+    } else
+      return (
+        <div>
+          <Link to="/">
+            <button>home</button>
+          </Link>
+          <Link to="/about">
+            <button>about</button>
+          </Link>
+        </div>
+      );
   }
 }
 
-export default Navbar;
+function mapStateToProps(state) {
+  return { user: state.user };
+}
+export default connect(mapStateToProps)(Navbar);
