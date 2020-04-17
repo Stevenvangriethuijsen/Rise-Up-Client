@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import { userLocations } from "../actions/userlocations";
 
@@ -30,7 +31,8 @@ class DisplayMap extends React.Component {
         {this.props.userlocations.map((user) => (
           <Marker key={user.userId} position={[user.latitude, user.longitude]}>
             <Popup>
-              Hi I'm {user.userId}
+              Hi I'm
+              <Link to={`profile/${user.userId}`}>{user.userId}</Link>
               <br />
               Check me out!
             </Popup>
