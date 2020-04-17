@@ -28,16 +28,25 @@ class DisplayMap extends React.Component {
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
-        {this.props.userlocations.map((user) => (
-          <Marker key={user.userId} position={[user.latitude, user.longitude]}>
-            <Popup>
-              Hi I'm
-              <Link to={`profile/${user.userId}`}>{user.userId}</Link>
-              <br />
-              Check me out!
-            </Popup>
-          </Marker>
-        ))}
+        {this.props.userlocations
+          .filter(
+            (user) =>
+              user.latitude !== this.props.geolocation.latitude &&
+              user.longitude !== this.props.geolocation.longitude
+          )
+          .map((user) => (
+            <Marker
+              key={user.userId}
+              position={[user.latitude, user.longitude]}
+            >
+              <Popup>
+                Hi I'm
+                <Link to={`profile/${user.userId}`}>{user.userId}</Link>
+                <br />
+                Check me out!
+              </Popup>
+            </Marker>
+          ))}
         <Marker position={position}>
           <Popup>
             Hey there {this.props.user.name} <br /> You are here!
