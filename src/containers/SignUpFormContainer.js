@@ -8,6 +8,8 @@ class SignUpFormContainer extends React.Component {
     name: "",
     email: "",
     password: "",
+    hidden: "password",
+    button: "Show Password",
   };
 
   onChange = (event) => {
@@ -23,7 +25,18 @@ class SignUpFormContainer extends React.Component {
       name: "",
       email: "",
       password: "",
+      hidden: "password",
+      button: "Show Password",
     });
+  };
+
+  toggleShow = (event) => {
+    event.preventDefault();
+    if (this.state.hidden === "password") {
+      this.setState({ hidden: "text", button: "Hide Password" });
+    } else {
+      this.setState({ hidden: "password", button: "Show Password" });
+    }
   };
 
   render() {
@@ -32,6 +45,7 @@ class SignUpFormContainer extends React.Component {
         onSubmit={this.onSubmit}
         onChange={this.onChange}
         values={this.state}
+        toggleShow={this.toggleShow}
       />
     );
   }

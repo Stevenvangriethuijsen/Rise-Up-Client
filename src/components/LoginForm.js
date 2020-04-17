@@ -19,14 +19,17 @@ class LoginForm extends React.Component {
           <label>
             Password
             <input
-              type="password"
+              type={this.props.values.hidden}
               name="password"
               placeholder="password"
               value={this.props.values.password}
               onChange={this.props.onChange}
             />
+            <button onClick={this.props.toggleShow}>
+              {this.props.values.button}
+            </button>
           </label>
-          <input type="submit" value="Submit"></input>
+          <input type="submit" value="Log in"></input>
         </form>
       </div>
     );
