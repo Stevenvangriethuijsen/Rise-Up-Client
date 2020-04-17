@@ -10,6 +10,9 @@ class Navbar extends React.Component {
           <Link to="/">
             <button>home</button>
           </Link>
+          <Link to="/myprofile">
+            <button>my profile</button>
+          </Link>
           <Link to="/map">
             <button>map</button>
           </Link>

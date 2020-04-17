@@ -18,7 +18,7 @@ class DisplayMap extends React.Component {
     const name = this.props.users.find(
       (user) => user.userId === geolocationObject.userId
     );
-    // console.log(name);
+    console.log(name);
     return name.name;
   };
   render() {
@@ -63,14 +63,6 @@ class DisplayMap extends React.Component {
             Hey there {this.props.user.name} <br /> You are here!
           </Popup>
         </Marker>
-
-        {/* {this.props.users
-          .filter((user) => user.location.latitude !== null)
-          .map((user) =>
-            console.log(
-              `${user.name} is at the following coordinates ${user.location.latitude} x ${user.location.longitude}`
-            )
-          )} */}
       </Map>
     );
   }
