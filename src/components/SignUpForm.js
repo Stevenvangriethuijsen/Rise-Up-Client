@@ -29,7 +29,7 @@ class SignUpForm extends React.Component {
           <label>
             Password
             <input
-              type="text"
+              type="password"
               name="password"
               placeholder="password"
               value={this.props.values.password}
