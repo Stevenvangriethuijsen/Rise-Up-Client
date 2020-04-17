@@ -1,10 +1,19 @@
 import React from "react";
 import { connect } from "react-redux";
 import ViewProfile from "../components/ViewProfile";
-
+import Redirect from "../components/Redirect";
 class ViewProfileContainer extends React.Component {
   render() {
-    return <ViewProfile />;
+    if (this.props.user !== "") {
+      return <ViewProfile />;
+    } else {
+      return <Redirect />;
+    }
   }
 }
-export default connect(null, {})(ViewProfileContainer);
+
+function mapStateToProps(state) {
+  return { user: state.user };
+}
+
+export default connect(mapStateToProps)(ViewProfileContainer);
